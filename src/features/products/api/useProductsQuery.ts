@@ -1,7 +1,6 @@
 "use client";
 
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
-import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { QUERY_KEYS } from "@/commons/constants/query-keys";
 import type { Product } from "@/components/commerce/types";
 
@@ -12,48 +11,42 @@ export type UseProductsParams = {
 
 type ProductsQueryResult = UseQueryResult<Product[]>;
 
-type SupabaseProductRow = {
-  id: string;
-  name: string;
-  price: number;
-  sale_price: number | null;
-  image_url: string | null;
-  status: "registered" | "hidden" | "sold_out";
-  rating_average: number | null;
-};
-
 async function fetchProducts(params?: UseProductsParams): Promise<Product[]> {
-  const supabase = getSupabaseBrowserClient() as any;
+  const mock: Product[] = [
+    {
+      id: "p-1",
+      name: "Mock T‑Shirt",
+      price: 29000,
+      salePrice: 19000,
+      imageUrl:
+        "https://images.pexels.com/photos/10026491/pexels-photo-10026491.jpeg",
+      rating: 4.5,
+      reviewCount: 12,
+    },
+    {
+      id: "p-2",
+      name: "Mock Sneakers",
+      price: 79000,
+      imageUrl:
+        "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
+      rating: 4.8,
+      reviewCount: 34,
+    },
+    {
+      id: "p-3",
+      name: "Mock Backpack",
+      price: 59000,
+      salePrice: 49000,
+      imageUrl:
+        "https://images.pexels.com/photos/374679/pexels-photo-374679.jpeg",
+      rating: 4.2,
+      reviewCount: 7,
+    },
+  ];
 
-  let query = supabase.from("products").select("*").neq("status", "hidden");
+  const limited = params?.limit ? mock.slice(0, params.limit) : mock;
 
-  if (params?.limit != null) {
-    query = query.limit(params.limit);
-  }
-
-  // TODO: search 파라미터 처리 (name LIKE 등)
-
-  const { data, error } = (await query) as {
-    data: SupabaseProductRow[] | null;
-    error: { message?: string } | null;
-  };
-
-  if (error) {
-    throw new Error(error.message ?? "상품 목록을 불러오지 못했습니다.");
-  }
-
-  if (!data) return [];
-
-  return data.map<Product>((row) => ({
-    id: row.id,
-    name: row.name,
-    price: Number(row.price),
-    salePrice: row.sale_price != null ? Number(row.sale_price) : undefined,
-    imageUrl: row.image_url ?? "",
-    rating:
-      row.rating_average != null ? Number(row.rating_average) : undefined,
-    reviewCount: undefined,
-  }));
+  return Promise.resolve(limited);
 }
 
 export function useProductsQuery(params?: UseProductsParams): ProductsQueryResult {
