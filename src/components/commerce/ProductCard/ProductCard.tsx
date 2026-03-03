@@ -1,20 +1,8 @@
 import Image from "next/image";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  salePrice?: number;
-  imageUrl: string;
-  rating: number;
-}
-
-interface ProductCardProps {
-  product: Product;
-}
+import type { Product, ProductCardProps } from "../types";
 
 export function ProductCard({ product }: ProductCardProps) {
-  const { name, price, salePrice, imageUrl, rating } = product;
+  const { name, price, salePrice, imageUrl, rating = 0 } = product;
 
   const hasSale = typeof salePrice === "number" && salePrice < price;
   const discount = hasSale ? Math.round(((price - salePrice!) / price) * 100) : 0;

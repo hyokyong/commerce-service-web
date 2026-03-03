@@ -1,21 +1,16 @@
 "use client";
 
-export type CreateOrderInput = {
-  items: Array<{
-    productId: string;
-    quantity: number;
-  }>;
-};
+import type { CreateOrderInput, CreateOrderResult } from "./types";
 
 type UseCreateOrderMutationResult = {
-  mutateAsync: (input: CreateOrderInput) => Promise<{ orderId: string }>;
+  mutateAsync: (input: CreateOrderInput) => Promise<CreateOrderResult>;
   isPending: boolean;
   error: Error | null;
 };
 
 export function useCreateOrderMutation(): UseCreateOrderMutationResult {
   return {
-    async mutateAsync() {
+    async mutateAsync(): Promise<CreateOrderResult> {
       return { orderId: "placeholder" };
     },
     isPending: false,
