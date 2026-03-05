@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Cursor App — Commerce & Admin
 
-## Getting Started
+커머스 + 관리자 대시보드가 공존하는 **Next.js 16 App Router** 프로젝트입니다.  
+Cursor AI와 Figma(TalkToFigma MCP)로 구조·상태 관리·API·디자인 토큰을 단계적으로 구축했습니다.
 
-First, run the development server:
+---
+
+## 기술 스택
+
+| 구분 | 기술 |
+|------|------|
+| 프레임워크 | Next.js 16, React 19, App Router |
+| 언어·스타일 | TypeScript 5, Tailwind CSS 4 |
+| 상태 관리 | Zustand (장바구니 persist, 세션) |
+| 서버·캐시 | TanStack React Query 5 |
+| 기타 | React Compiler, Supabase(연동 준비), yarn |
+
+---
+
+## 프로젝트 구조
+
+- **app**: `(auth)` 로그인/회원가입, `(commerce)` 홈·상품·장바구니·결제·계정, `_providers`(React Query)
+- **components**: ui, commerce(ProductCard), admin
+- **features**: products(useProductsQuery), orders(useCreateOrderMutation)
+- **commons**: constants(color, typography, query-keys), store(cart, session), types, utils, prompt(.mdc)
+- **lib**: supabase/client, auth
+
+Route Group `(auth)`·`(commerce)` 사용, 동적 라우트 `products/[productId]`.
+
+---
+
+## 주요 기능
+
+- **커머스**: 상품 목록/상세(React Query, mock), ProductCard 그리드, 로딩·에러 UI
+- **장바구니**: Zustand + localStorage persist, 추가/수량/삭제/비우기, 총 금액(salePrice 우선)
+- **주문**: useCreateOrderMutation — Supabase orders/order_items 연동 준비
+- **세션**: session-store (user, isAuthenticated, isAdmin, role)
+- **디자인 토큰**: Figma 연동 → color.ts(commerceColors/adminColors), typography.ts
+
+---
+
+## 실행
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
+yarn dev    # http://localhost:3000
+yarn build
+yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Supabase 연동 시: `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SECRET_KEY`. 클라이언트는 `lib/supabase/client.ts`에서 구현.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Cursor AI 활용
 
-## Learn More
+- **규칙** (`.cursor/rules/`): 공통 가이드(수정 범위, 타입, yarn, 빌드 검증), Git(Conventional Commits·한국어), Supabase 마이그레이션은 TS 스크립트+Management API
+- **프롬프트** (`commons/prompt/*.mdc`): Next 구조(1) → 타입(2) → 장바구니 스토어(3) → 세션 스토어(4) → 상품 쿼리(5) → 주문 뮤테이션(6) → Figma 디자인 토큰(7) 순으로 구현 유도
+- **TalkToFigma MCP**: 채널 연결 후 `get_styles`로 Color·Text 스타일 추출 → color.ts, typography.ts 생성
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 디자인 시스템
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Figma Commerce/Admin 템플릿 기반. `commerceColors` / `adminColors`(primary, background, text, border, semantic, neutral), `typography`(Hero, Headline 1–7, Body, Caption, Button XL~XS), Poppins/Inter.
 
-## Deploy on Vercel
+```ts
+import { commerceColors } from "@/commons/constants/color";
+import { typography, fontFamilyCss } from "@/commons/constants/typography";
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 컨벤션
+
+- 커밋: Conventional Commits + 한국어 (feat/fix/refactor/docs/test/chore)
+- 코드: TypeScript strict, path alias `@/*`, Tailwind
+
+---
+
+**최종 업데이트**: 프로젝트 현재 상태 기준 (Commerce 영역 + Admin 대시보드 골격, Zustand/React Query/Supabase 연동 준비, Figma 디자인 토큰 반영)
