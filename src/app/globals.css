@@ -1,26 +1,240 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Commerce - color */
+  --commerce-primary-main: #141718;
+  --commerce-primary-dark: #0e1011;
+  --commerce-primary-light: #34393a;
+  --commerce-background-default: #ffffff;
+  --commerce-background-paper: #fefefe;
+  --commerce-background-light: #f4f6f7;
+  --commerce-background-secondary: #e8ecf0;
+  --commerce-text-primary: #141718;
+  --commerce-text-secondary: #34393a;
+  --commerce-text-disabled: #6c7278;
+  --commerce-text-hint: #6c7278;
+  --commerce-border-default: #e8ecf0;
+  --commerce-border-light: #f4f6f7;
+  --commerce-border-dark: #6c7278;
+  --commerce-semantic-info: #377dff;
+  --commerce-semantic-success: #38cb89;
+  --commerce-semantic-warning: #ffab00;
+  --commerce-semantic-error: #ff562f;
+  --commerce-neutral-n01: #fefefe;
+  --commerce-neutral-n02: #f4f6f7;
+  --commerce-neutral-n03: #e8ecf0;
+  --commerce-neutral-n04: #6c7278;
+  --commerce-neutral-n05: #34393a;
+  --commerce-neutral-n06: #232627;
+  --commerce-neutral-n07: #141718;
+
+  /* Admin - color */
+  --admin-primary-main: #141718;
+  --admin-primary-dark: #0e1011;
+  --admin-primary-light: #34393a;
+  --admin-background-default: #ffffff;
+  --admin-background-paper: #fefefe;
+  --admin-background-light: #f4f6f7;
+  --admin-background-gray: #e8ecf0;
+  --admin-background-secondary: #f3f4f6;
+  --admin-text-primary: #141718;
+  --admin-text-secondary: #34393a;
+  --admin-text-disabled: #6c7278;
+  --admin-text-hint: #717182;
+  --admin-border-default: #e8ecf0;
+  --admin-border-light: #f4f6f7;
+  --admin-border-dark: #6c7278;
+  --admin-semantic-info: #377dff;
+  --admin-semantic-success: #38cb89;
+  --admin-semantic-warning: #ffab00;
+  --admin-semantic-error: #ff562f;
+  --admin-neutral-n01: #fefefe;
+  --admin-neutral-n02: #f4f6f7;
+  --admin-neutral-n03: #e8ecf0;
+  --admin-neutral-n04: #6c7278;
+  --admin-neutral-n05: #34393a;
+  --admin-neutral-n06: #232627;
+  --admin-neutral-n07: #141718;
+
+  /* Typography - font family */
+  --commerce-font-family-heading: "Poppins", sans-serif;
+  --commerce-font-family-body: "Inter", sans-serif;
+  --admin-font-family-heading: "Poppins", sans-serif;
+  --admin-font-family-body: "Inter", sans-serif;
+
+  /* Typography - commerce (desktop) */
+  --commerce-typography-hero-font-size: 96px;
+  --commerce-typography-hero-font-weight: 500;
+  --commerce-typography-hero-font-family: var(--commerce-font-family-heading);
+  --commerce-typography-headline-1-font-size: 80px;
+  --commerce-typography-headline-1-font-weight: 500;
+  --commerce-typography-headline-1-font-family: var(--commerce-font-family-heading);
+  --commerce-typography-headline-2-font-size: 72px;
+  --commerce-typography-headline-2-font-weight: 500;
+  --commerce-typography-headline-2-font-family: var(--commerce-font-family-heading);
+  --commerce-typography-headline-3-font-size: 54px;
+  --commerce-typography-headline-3-font-weight: 500;
+  --commerce-typography-headline-3-font-family: var(--commerce-font-family-heading);
+  --commerce-typography-headline-4-font-size: 40px;
+  --commerce-typography-headline-4-font-weight: 500;
+  --commerce-typography-headline-4-font-family: var(--commerce-font-family-heading);
+  --commerce-typography-headline-5-font-size: 34px;
+  --commerce-typography-headline-5-font-weight: 500;
+  --commerce-typography-headline-5-font-family: var(--commerce-font-family-heading);
+  --commerce-typography-headline-6-font-size: 28px;
+  --commerce-typography-headline-6-font-weight: 500;
+  --commerce-typography-headline-6-font-family: var(--commerce-font-family-heading);
+  --commerce-typography-headline-7-font-size: 20px;
+  --commerce-typography-headline-7-font-weight: 500;
+  --commerce-typography-headline-7-font-family: var(--commerce-font-family-heading);
+  --commerce-typography-body-1-font-size: 20px;
+  --commerce-typography-body-1-font-weight: 400;
+  --commerce-typography-body-1-font-family: var(--commerce-font-family-body);
+  --commerce-typography-body-1-semi-font-size: 20px;
+  --commerce-typography-body-1-semi-font-weight: 600;
+  --commerce-typography-body-1-semi-font-family: var(--commerce-font-family-body);
+  --commerce-typography-body-1-bold-font-size: 20px;
+  --commerce-typography-body-1-bold-font-weight: 700;
+  --commerce-typography-body-1-bold-font-family: var(--commerce-font-family-body);
+  --commerce-typography-body-2-font-size: 16px;
+  --commerce-typography-body-2-font-weight: 400;
+  --commerce-typography-body-2-font-family: var(--commerce-font-family-body);
+  --commerce-typography-body-2-semi-font-size: 16px;
+  --commerce-typography-body-2-semi-font-weight: 600;
+  --commerce-typography-body-2-semi-font-family: var(--commerce-font-family-body);
+  --commerce-typography-body-2-bold-font-size: 16px;
+  --commerce-typography-body-2-bold-font-weight: 700;
+  --commerce-typography-body-2-bold-font-family: var(--commerce-font-family-body);
+  --commerce-typography-caption-1-font-size: 14px;
+  --commerce-typography-caption-1-font-weight: 400;
+  --commerce-typography-caption-1-font-family: var(--commerce-font-family-body);
+  --commerce-typography-caption-1-semi-font-size: 14px;
+  --commerce-typography-caption-1-semi-font-weight: 600;
+  --commerce-typography-caption-1-semi-font-family: var(--commerce-font-family-body);
+  --commerce-typography-caption-1-bold-font-size: 14px;
+  --commerce-typography-caption-1-bold-font-weight: 700;
+  --commerce-typography-caption-1-bold-font-family: var(--commerce-font-family-body);
+  --commerce-typography-caption-2-font-size: 12px;
+  --commerce-typography-caption-2-font-weight: 400;
+  --commerce-typography-caption-2-font-family: var(--commerce-font-family-body);
+  --commerce-typography-caption-2-semi-font-size: 12px;
+  --commerce-typography-caption-2-semi-font-weight: 600;
+  --commerce-typography-caption-2-semi-font-family: var(--commerce-font-family-body);
+  --commerce-typography-caption-2-bold-font-size: 12px;
+  --commerce-typography-caption-2-bold-font-weight: 700;
+  --commerce-typography-caption-2-bold-font-family: var(--commerce-font-family-body);
+  --commerce-typography-hairline-1-font-size: 16px;
+  --commerce-typography-hairline-1-font-weight: 700;
+  --commerce-typography-hairline-1-font-family: var(--commerce-font-family-body);
+  --commerce-typography-hairline-2-font-size: 12px;
+  --commerce-typography-hairline-2-font-weight: 700;
+  --commerce-typography-hairline-2-font-family: var(--commerce-font-family-body);
+  --commerce-typography-button-xl-font-size: 26px;
+  --commerce-typography-button-xl-font-weight: 500;
+  --commerce-typography-button-xl-font-family: var(--commerce-font-family-body);
+  --commerce-typography-button-l-font-size: 22px;
+  --commerce-typography-button-l-font-weight: 500;
+  --commerce-typography-button-l-font-family: var(--commerce-font-family-body);
+  --commerce-typography-button-m-font-size: 18px;
+  --commerce-typography-button-m-font-weight: 500;
+  --commerce-typography-button-m-font-family: var(--commerce-font-family-body);
+  --commerce-typography-button-s-font-size: 16px;
+  --commerce-typography-button-s-font-weight: 500;
+  --commerce-typography-button-s-font-family: var(--commerce-font-family-body);
+  --commerce-typography-button-xs-font-size: 14px;
+  --commerce-typography-button-xs-font-weight: 500;
+  --commerce-typography-button-xs-font-family: var(--commerce-font-family-body);
+
+  /* Typography - admin (desktop, 동일 스케일) */
+  --admin-typography-hero-font-size: 96px;
+  --admin-typography-hero-font-weight: 500;
+  --admin-typography-hero-font-family: var(--admin-font-family-heading);
+  --admin-typography-headline-1-font-size: 80px;
+  --admin-typography-headline-1-font-weight: 500;
+  --admin-typography-headline-1-font-family: var(--admin-font-family-heading);
+  --admin-typography-headline-2-font-size: 72px;
+  --admin-typography-headline-2-font-weight: 500;
+  --admin-typography-headline-2-font-family: var(--admin-font-family-heading);
+  --admin-typography-headline-3-font-size: 54px;
+  --admin-typography-headline-3-font-weight: 500;
+  --admin-typography-headline-3-font-family: var(--admin-font-family-heading);
+  --admin-typography-headline-4-font-size: 40px;
+  --admin-typography-headline-4-font-weight: 500;
+  --admin-typography-headline-4-font-family: var(--admin-font-family-heading);
+  --admin-typography-headline-5-font-size: 34px;
+  --admin-typography-headline-5-font-weight: 500;
+  --admin-typography-headline-5-font-family: var(--admin-font-family-heading);
+  --admin-typography-headline-6-font-size: 28px;
+  --admin-typography-headline-6-font-weight: 500;
+  --admin-typography-headline-6-font-family: var(--admin-font-family-heading);
+  --admin-typography-headline-7-font-size: 20px;
+  --admin-typography-headline-7-font-weight: 500;
+  --admin-typography-headline-7-font-family: var(--admin-font-family-heading);
+  --admin-typography-body-1-font-size: 20px;
+  --admin-typography-body-1-font-weight: 400;
+  --admin-typography-body-1-font-family: var(--admin-font-family-body);
+  --admin-typography-body-2-font-size: 16px;
+  --admin-typography-body-2-font-weight: 400;
+  --admin-typography-body-2-font-family: var(--admin-font-family-body);
+  --admin-typography-caption-1-font-size: 14px;
+  --admin-typography-caption-1-font-weight: 400;
+  --admin-typography-caption-1-font-family: var(--admin-font-family-body);
+  --admin-typography-caption-2-font-size: 12px;
+  --admin-typography-caption-2-font-weight: 400;
+  --admin-typography-caption-2-font-family: var(--admin-font-family-body);
+  --admin-typography-button-m-font-size: 18px;
+  --admin-typography-button-m-font-weight: 500;
+  --admin-typography-button-m-font-family: var(--admin-font-family-body);
+  --admin-typography-button-s-font-size: 16px;
+  --admin-typography-button-s-font-weight: 500;
+  --admin-typography-button-s-font-family: var(--admin-font-family-body);
+  --admin-typography-button-xs-font-size: 14px;
+  --admin-typography-button-xs-font-weight: 500;
+  --admin-typography-button-xs-font-family: var(--admin-font-family-body);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (max-width: 768px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+    --commerce-typography-hero-font-size: 48px;
+    --commerce-typography-headline-1-font-size: 40px;
+    --commerce-typography-headline-2-font-size: 36px;
+    --commerce-typography-headline-3-font-size: 28px;
+    --commerce-typography-headline-4-font-size: 24px;
+    --commerce-typography-headline-5-font-size: 22px;
+    --commerce-typography-headline-6-font-size: 20px;
+    --commerce-typography-headline-7-font-size: 18px;
+    --commerce-typography-body-1-font-size: 18px;
+    --commerce-typography-body-1-semi-font-size: 18px;
+    --commerce-typography-body-1-bold-font-size: 18px;
+    --commerce-typography-body-2-font-size: 15px;
+    --commerce-typography-body-2-semi-font-size: 15px;
+    --commerce-typography-body-2-bold-font-size: 15px;
+    --commerce-typography-caption-1-font-size: 13px;
+    --commerce-typography-caption-1-semi-font-size: 13px;
+    --commerce-typography-caption-1-bold-font-size: 13px;
+    --commerce-typography-caption-2-font-size: 11px;
+    --commerce-typography-caption-2-semi-font-size: 11px;
+    --commerce-typography-caption-2-bold-font-size: 11px;
+    --commerce-typography-button-xl-font-size: 22px;
+    --commerce-typography-button-l-font-size: 18px;
+    --commerce-typography-button-m-font-size: 16px;
+    --commerce-typography-button-s-font-size: 14px;
+    --commerce-typography-button-xs-font-size: 13px;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    --admin-typography-hero-font-size: 48px;
+    --admin-typography-headline-1-font-size: 40px;
+    --admin-typography-headline-2-font-size: 36px;
+    --admin-typography-headline-3-font-size: 28px;
+    --admin-typography-headline-4-font-size: 24px;
+    --admin-typography-headline-5-font-size: 22px;
+    --admin-typography-headline-6-font-size: 20px;
+    --admin-typography-headline-7-font-size: 18px;
+    --admin-typography-body-1-font-size: 18px;
+    --admin-typography-body-2-font-size: 15px;
+    --admin-typography-caption-1-font-size: 13px;
+    --admin-typography-caption-2-font-size: 11px;
+    --admin-typography-button-m-font-size: 16px;
+    --admin-typography-button-s-font-size: 14px;
+    --admin-typography-button-xs-font-size: 13px;
+  }
 }

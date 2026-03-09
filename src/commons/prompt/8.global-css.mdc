@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+"color.ts와 typography.ts의 토큰을 
+app/globals.css의 :root에 CSS 변수로 변환해줘.
+
+요구사항:
+1. --commerce-* prefix로 커머스 토큰 정의
+2. --admin-* prefix로 어드민 토큰 정의
+3. 기존 네이밍 컨벤션 유지 (kebab-case)
+4. 모바일 타이포그래피는 @media (max-width: 768px)에 정의
+
+변환할 파일:
+- commons/constants/color.ts
+- commons/constants/typography.ts"
